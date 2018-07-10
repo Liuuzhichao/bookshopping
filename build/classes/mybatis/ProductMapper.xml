@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sdut.dao.ProductMapper">
+	<insert id="saveProduct" parameterType="cn.sdut.model.Products">
+		insert into products values(#{id},#{name},#{price},
+		#{category},#{pnum},#{imgurl},#{description},#{state},#{cbtime}) 
+	</insert>
+	
+	<delete id="delProduct" parameterType="String">
+		delete from products where id=#{id}
+	</delete>
+
+	<update id="updateProduct" parameterType="cn.sdut.model.Products">
+		update products set name=#{name}, price=#{price}, category=#{category},
+		pnum=#{pnum} 
+		<!-- 动态SQL语句,修改信息时如果图片已经存在,那么不对图片URL进行覆盖-->
+		<if test="imgurl!=null and imgurl!=''">
+			,imgurl=#{imgurl}
+		</if>
+		, description=#{description}, state=#{state}, cbtime=#{cbtime} 
+		where id=#{id}
+	</update>
+	
+	<select id="findProductById" parameterType="String" resultType="cn.sdut.model.Products">
+		select * from products where id=#{id}
+	</select>
+	
+	<select id="findProductsList" resultType="cn.sdut.model.Products">
+		select * from products;
+	</select>
+	
+	<select id="findProductsListByType" parameterType="String" resultType="cn.sdut.model.Products">
+		select * from products where category=#{type}
+	</select>
+</mapper>
