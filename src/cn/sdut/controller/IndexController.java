@@ -14,12 +14,12 @@ import cn.sdut.service.ProductService;
 public class IndexController {
 	
 	@Autowired
-	private ProductService ProductService;
+	private ProductService productService;
 
 	@RequestMapping("showIndex")
 	public String showIndex(Model model) {
 		//查询商品
-		List<Products> productsList = ProductService.findProductsList();
+		List<Products> productsList = productService.findProductsList();
 		//将查询到的商品在首页面中进行展示
 		model.addAttribute("productsList",productsList);
 		
@@ -32,6 +32,12 @@ public class IndexController {
 		return "admin/index";
 	}
 	
-	
+	//查看详情
+	@RequestMapping("showProductInformation")
+	public String showProductInformation(String id, Model model) {
+		Products product = productService.findProductById(id);
+		model.addAttribute("product", product);
+		return "productinfo";
+	}
 	
 }

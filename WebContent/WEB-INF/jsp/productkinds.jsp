@@ -152,7 +152,7 @@
                         	<br>
                         	<span>${pro.price }</span>
                         	<br>
-                        	<a href="#">查看详细</a>
+                        	<a href="${pageContext.request.contextPath }/showProductInformation?id=${pro.id }">查看详细</a>
                        	 	<br>
                        	 	<button style="background:#87520E;color:white;line-height:15px;font-size:13px;border-radius:5px;border:#87520E;cursor:pointer;">加入购物车</button>
                    	 	</div>
