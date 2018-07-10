@@ -18,7 +18,7 @@ function transCategory(category){
 	if(category =="novel"){
 		s="小说";
 	}else if(category=="cartoon"){
-		s="同属";
+		s="童书";
 	}else if(category=="study"){
 		s="学习考试";
 	}else if(category=="literature"){

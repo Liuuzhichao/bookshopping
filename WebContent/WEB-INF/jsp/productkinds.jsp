@@ -12,6 +12,8 @@
     <title>Estore图书商城</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/public.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/check.js"></script>
 </head>
 
 <body>
@@ -139,7 +141,7 @@
 
             <div class="tuijian">
                 <div class="tuijian_top">
-                    <h1 style="float: left;">倾情推荐</h1>
+                    <h1 style="float: left;" id="category">${category }</h1>
                     <p style="float: right;">更多商品>></p>
                 </div>
                 <div class="tuijian_product" style="min-width:750px" >
@@ -176,5 +178,13 @@
 
 
 </body>
+
+<script type="text/javascript">
+	$(function (){
+		var category = transCategory('${category}');
+		$("#category").html(category);
+	});
+
+</script>
 
 </html>

@@ -48,11 +48,11 @@ public class ProductController {
 		pro.setId(UUIDUtils.getUUID());
 		pro.setImgurl(upload);
 		pro.setState(0);//1表示上架,0表示下架
-		//将路径保存到数据库当中
+		//将路径保存到数据库当中,添加商品
 		service.saveProduct(pro);
 		
-		System.out.println(pro);
-		System.out.println(imgpic.getOriginalFilename());
+		//System.out.println(pro);
+		//System.out.println(imgpic.getOriginalFilename());
 		return "redirect:showProductList";
 	}
 	
@@ -102,6 +102,7 @@ public class ProductController {
 		System.out.println(productsList);
 		//将商品传递到页面中进行展示
 		model.addAttribute("productsList",productsList);
+		model.addAttribute("category", type);
 		return "productkinds";
 	}
 
