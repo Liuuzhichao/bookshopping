@@ -2,6 +2,7 @@ package cn.sdut.service;
 
 import java.util.List;
 
+import cn.sdut.model.PageBean;
 import cn.sdut.model.Products;
 
 public interface ProductService {
@@ -21,5 +22,18 @@ public interface ProductService {
 	 * @return
 	 */
 	public List<Products> findProductsListByType(String type);
+
+	/**
+	 * 获取商品的总记录数
+	 * @return
+	 */
+	public Integer findCount();
+	
+	/**
+	 * 进行商品分页的查询方法
+	 * @param page
+	 * @return
+	 */
+	public List<Products> findProductsListPage(PageBean page);
 
 }

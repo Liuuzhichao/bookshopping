@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import cn.sdut.dao.ProductMapper;
+import cn.sdut.model.PageBean;
 import cn.sdut.model.Products;
 import cn.sdut.service.ProductService;
 
@@ -46,6 +47,18 @@ public class ProductServiceImpl implements ProductService {
 	public List<Products> findProductsListByType(String type) {
 		// TODO Auto-generated method stub
 		return mapper.findProductsListByType(type);
+	}
+
+	@Override
+	public Integer findCount() {
+		// TODO Auto-generated method stub
+		return mapper.findCount();
+	}
+
+	@Override
+	public List<Products> findProductsListPage(PageBean page) {
+		// TODO Auto-generated method stub
+		return mapper.findProductsListPage(page);
 	}
 
 }

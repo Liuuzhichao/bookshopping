@@ -31,7 +31,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from products;
 	</select>
 	
+	
+	<!-- 根据类别查询商品 -->
 	<select id="findProductsListByType" parameterType="String" resultType="cn.sdut.model.Products">
 		select * from products where category=#{type}
+	</select>
+	
+	<!-- 查询商品总数量 -->
+	<select id="findCount" resultType="int"> 
+		select count(*) from products
+	</select>
+	
+	<!-- 分页查询商品信息 -->
+	<select id="findProductsListPage" parameterType="cn.sdut.model.PageBean" resultType="cn.sdut.model.Products">
+		select * from products limit #{pageNum},#{pageSize}
 	</select>
 </mapper>

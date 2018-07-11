@@ -59,7 +59,7 @@ public class ProductController {
 	//删除商品
 	@RequestMapping("delProduct")
 	public String delProduct(String id) {
-		System.out.println("----");
+		//System.out.println("----");
 		//调用service进行删除
 		service.delProduct(id);
 		
@@ -82,7 +82,7 @@ public class ProductController {
 	//MultipartFile的对象可以自动拿到文件对象
 	public String updateProduct(Products product, MultipartFile imgpic) throws IllegalStateException, IOException {
 		//System.out.println("update...");
-		System.out.println(product);
+		//System.out.println(product);
 		//获取文件的路径名,如果不为空(图片存在)就自动上传该路径
 		if(!imgpic.getOriginalFilename().equals("") && 
 				!(imgpic.getOriginalFilename()==null)) {

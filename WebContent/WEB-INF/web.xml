@@ -5,8 +5,9 @@
 	id="WebApp_ID" version="3.1">
   
   <display-name>bookshopping</display-name>
+  <!-- 设置主页面 -->
   <welcome-file-list>
-  	<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
+  	<welcome-file>/</welcome-file>
   </welcome-file-list>
   
   
