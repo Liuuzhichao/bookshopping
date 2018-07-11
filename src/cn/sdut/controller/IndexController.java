@@ -20,7 +20,17 @@ public class IndexController {
 	@RequestMapping("showIndex")
 	public String showIndex(Model model) {
 		//查询商品
-		List<Products> productsList = productService.findProductsList();
+		//List<Products> productsList = productService.findProductsList();
+		
+		//获取商品的总记录数
+		Integer count = productService.findCount();
+		//System.out.println(count);
+				
+		//创建pageBean的对象,设置页面的一些信息(每页显示的记录数,显示的页码,总记录数)
+		PageBean page = new PageBean(8,1,count);
+		//调用具有分页功能的查询所有商品的方法
+		List<Products> productsList = productService.findProductsListPage(page);
+		
 		//将查询到的商品在首页面中进行展示
 		model.addAttribute("productsList",productsList);
 		
