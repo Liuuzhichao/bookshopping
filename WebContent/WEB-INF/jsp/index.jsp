@@ -12,6 +12,8 @@
     <title>Estore图书商城</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/public.css">
+    
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.3.1.js"></script>
 </head>
 
 <body>
@@ -224,7 +226,9 @@
                         	<br>
                         	<a href="${pageContext.request.contextPath }/showProductInformation?id=${pro.id }">查看详细</a>
                        	 	<br>
-                       	 	<button style="background:#87520E;color:white;line-height:15px;font-size:13px;border-radius:5px;border:#87520E;cursor:pointer;">加入购物车</button>
+                       	 	<!-- 加入购物车 -->
+                       	 	<button style="background:#87520E;color:white;line-height:15px;font-size:13px;border-radius:5px;border:#87520E;cursor:pointer;" onclick="addCart('${pro.id}')">加入购物车</button>
+                       	
                    	 	</div>
                 	</c:forEach>
                 </div>
@@ -336,5 +340,23 @@
 
 
 </body>
+
+<script type="text/javascript">
+	function addCart(id){
+		//alert("---");
+		$.ajax({
+			url:"${pageContext.request.contextPath}/addCart",
+			data:{"id":id},
+			type:"POST",
+			dataType:"json",
+			success:function (data){
+				if(data.msg=="true"){
+					alert("加入购物车成功");
+				} 
+			}
+		});
+	}
+
+</script>
 
 </html>
