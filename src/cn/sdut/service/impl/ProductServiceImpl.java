@@ -44,9 +44,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Products> findProductsListByType(String type) {
+	public List<Products> findProductsListByType(String type, PageBean pageBean) {
 		// TODO Auto-generated method stub
-		return mapper.findProductsListByType(type);
+		return mapper.findProductsListByType(type,pageBean);
 	}
 
 	@Override
@@ -59,6 +59,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<Products> findProductsListPage(PageBean page) {
 		// TODO Auto-generated method stub
 		return mapper.findProductsListPage(page);
+	}
+
+	@Override
+	public int findCountByType(String type) {
+		// TODO Auto-generated method stub
+		return mapper.findCountByType(type);
 	}
 
 }

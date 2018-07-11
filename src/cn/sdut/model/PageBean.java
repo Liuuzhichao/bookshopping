@@ -28,7 +28,13 @@ public class PageBean {
 		return page;
 	}
 	public void setPage(Integer page) {
-		this.page = page;
+		if(page==null || page<1) {
+			this.page = 1;
+		} else if (page>pageCount) {
+			this.page = pageCount;
+		} else {
+			this.page = page;
+		}
 	}
 	public Integer getCount() {
 		return count;
@@ -73,10 +79,10 @@ public class PageBean {
 	 */
 	public PageBean(Integer pageSize, Integer page, Integer count) {
 		this.pageSize = pageSize;
-		this.page = page;
 		this.count = count;
-		setPageNum();
 		setPageCount();
+		setPage(page);
+		setPageNum();
 	}
 	
 	

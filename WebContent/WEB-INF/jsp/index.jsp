@@ -228,9 +228,14 @@
                    	 	</div>
                 	</c:forEach>
                 </div>
+                <!-- 分页功能:上一页&下一页 -->
                 <div style="float: none; margin-top: 20px;">
-                    <button type="button" id="up" style="float: left;background:#87520E;line-height:30px;color:white;border:0;padding:3px 7px;font-size:15px;cursor:pointer;">上一页</button>
-                    <button type="button" id="down" style="float: right;background:#87520E;line-height:30px;color:white;border:0;padding:3px 7px;font-size:15px;cursor:pointer;">下一页</button>
+                    <a href="${pageContext.request.contextPath }/showIndex?page=${pageBean.page-1}">
+                    	<button type="button" id="up" style="float: left;background:#87520E;line-height:30px;color:white;border:0;padding:3px 7px;font-size:15px;cursor:pointer;">上一页</button>
+                    </a>
+                    <a href="${pageContext.request.contextPath }/showIndex?page=${pageBean.page+1}">
+                    	<button type="button" id="down" style="float: right;background:#87520E;line-height:30px;color:white;border:0;padding:3px 7px;font-size:15px;cursor:pointer;">下一页</button>
+                    </a>
                 </div>
 
                 <div class="new">

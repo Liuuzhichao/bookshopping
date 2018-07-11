@@ -46,7 +46,7 @@ public interface ProductMapper {
 	 * 根据类别查询商品
 	 * @return
 	 */
-	public List<Products> findProductsListByType(String type);
+	public List<Products> findProductsListByType(String type, PageBean pageBean);
 
 	/**
 	 * 查询商品总数量
@@ -60,4 +60,7 @@ public interface ProductMapper {
 	 * @return
 	 */
 	public List<Products> findProductsListPage(PageBean page);
+	
+	public int findCountByType(String type);
+	
 }

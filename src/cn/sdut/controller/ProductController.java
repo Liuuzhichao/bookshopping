@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
+import cn.sdut.model.PageBean;
 import cn.sdut.model.Products;
 import cn.sdut.service.ProductService;
 import cn.sdut.utils.UUIDUtils;
@@ -95,14 +97,21 @@ public class ProductController {
 	
 	//打开商品展示的页面
 	@RequestMapping("showProductKinds")
-	public String showProductKinds(String type, Model model) {
+	public String showProductKinds(String type, Model model, Integer page) {
 		//System.out.println(type);
+		
+		//查询到某一类别的商品总数
+		int count = service.findCountByType(type);
+		PageBean pageBean = new PageBean(8,page,count);
+		
 		//查询要显示的类型的商品
-		List<Products> productsList = service.findProductsListByType(type);
+		List<Products> productsList = service.findProductsListByType(type,pageBean);
 		System.out.println(productsList);
+		System.out.println(pageBean);
 		//将商品传递到页面中进行展示
 		model.addAttribute("productsList",productsList);
 		model.addAttribute("category", type);
+		model.addAttribute("pageBean", pageBean);
 		return "productkinds";
 	}
 
