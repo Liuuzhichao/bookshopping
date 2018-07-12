@@ -286,7 +286,8 @@
     font-weight: 600;
 }
 
-
+#ordertable{margin-top:20px;width:100%;background:#f8e49b;line-height:40px;border:#f8e49b solid 1px;border-bottom:white solid 1px;border-collapse: collapse;margin-bottom:20px;}
+.innertable{border-collapse: collapse;border:#F8E49B solid;line-height:30px;}
 
 
 /*-------------------------------*/

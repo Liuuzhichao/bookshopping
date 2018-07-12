@@ -81,6 +81,15 @@ public class AutoLoginFilter implements Filter{
 						//将登陆的对象存放到session当中
 						session.setAttribute("user", user2);
 					}
+				}else {
+					//如果请求的是与订单相关的请求,要求用户必须登录
+					if(uri.indexOf("order")!=-1 || uri.indexOf("Order")!=-1) {
+						//跳转到登录页面,采用重定向方式,因为不需要携带参数
+						response.sendRedirect("showLogin?type=3");
+						
+						//请求转发
+						//request.getRequestDispatcher("").forward(request, response);
+					}
 				}
 			}
 		}

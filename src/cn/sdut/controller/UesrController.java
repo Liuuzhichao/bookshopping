@@ -87,6 +87,8 @@ public class UesrController {
 			model.addAttribute("msg","注册成功,请登录");
 		} else if(type!=null && type.equals("2")) {
 			model.addAttribute("msg","用户名或密码错误");
+		} else if(type!=null && type.equals("3")) {
+			model.addAttribute("msg","请登录");
 		}
 		return "login";
 	}

@@ -29,7 +29,6 @@ public class CartController {
 	@RequestMapping("addCart")
 	@ResponseBody
 	public String addCart(String id, HttpServletRequest request) {
-		//获取到要加入购物车的商品
 		Products product = null;
 		HttpSession session = request.getSession();
 		
@@ -39,14 +38,14 @@ public class CartController {
 		if(cart==null) {
 			//定义一个map集合来作为购物车
 			cart = new HashMap<>();
-			//根据商品id来查询到商品
+			//获取到要加入购物车的商品
 			product = service.findProductById(id);
 			//将商品放入购物车,且置购买数量为1
 			cart.put(product, 1);
 		} else {
-			//判断加入购物车的商品在购物车中是否已经存在
 			Set<Products> keySet = cart.keySet();
 			product = ProductUtils.findProduct(keySet, id);
+			//判断加入购物车的商品在购物车中是否已经存在
 			if(product==null) {
 				product = service.findProductById(id);
 				cart.put(product, 1);
@@ -70,17 +69,18 @@ public class CartController {
 		//获取到购物车对象
 		HttpSession session = request.getSession();
 		Map<Products,Integer> cart = (Map<Products, Integer>) session.getAttribute("cart");
-		
+		//获取到set集合中的所有的键:购物车中的所有商品
 		Set<Products> keySet = cart.keySet();
+		//根据id去购物车中查找到该商品
 		Products product = ProductUtils.findProduct(keySet, id);
-		
+		//覆盖掉原来的商品信息
 		cart.put(product, count);
-		
+		//删除商品
 		if(count==0) {
 			cart.remove(product);
 		}
 		
-		
+		//将购物车信息放到session中保存
 		session.setAttribute("cart", cart);
 		
 		return "redirect:showCart";

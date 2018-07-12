@@ -106,7 +106,7 @@
                         	<input type="button" value="-" onclick="changeCount('${pro.key.id}','${pro.value-1 }','${pro.key.pnum }')" class="btn">
 
                         	<input type='text' value="${pro.value }" style="text-align:center;color:#87520E;width:120px;height:25px;" onkeydown="numbText(event);"
-                            	onblur="changeCount('${pro.key.id}',this.value,'${pro.key.pnum }')">
+                            	onchange="changeCount('${pro.key.id}',this.value,'${pro.key.pnum }')">
 
                         	<input type="button" value='+' onclick="changeCount('${pro.key.id}','${pro.value+1 }','${pro.key.pnum }')" class="btn">
                    	 	</td>
@@ -124,7 +124,7 @@
 				</c:forEach>
 				<tr>
                     <td colspan="5" align="right">
-                        <button onclick="gotoorder();" style="cursor:pointer;background:#87520E;border-radius:5px;line-height:40px;border:none;width:160px;color:white;font-size:18px;">进入结算</button>
+                        <button onclick="gotoOrder();" style="cursor:pointer;background:#87520E;border-radius:5px;line-height:40px;border:none;width:160px;color:white;font-size:18px;">进入结算</button>
                     </td>
                 </tr>
                 <tr>
@@ -161,6 +161,10 @@
 			}
 		}
 		window.location.href="${pageContext.request.contextPath}/updateCart?id="+id+"&count="+count;
+	}
+	
+	function gotoOrder(){
+		window.location.href="${pageContext.request.contextPath}/showCreatOrder";
 	}
 </script>
 
