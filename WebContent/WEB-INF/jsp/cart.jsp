@@ -73,7 +73,6 @@
 			<c:if test="${empty cart }">
 				购物车无信息
 			</c:if>
-<<<<<<< HEAD
 			<c:if test="${!empty cart }">
 				<table border="1" class="maintable">
 				<!-- 
@@ -164,63 +163,5 @@
 		window.location.href="${pageContext.request.contextPath}/updateCart?id="+id+"&count="+count;
 	}
 </script>
-=======
-			
-			<c:if test="${!empty cart }">
-				<table border="1" class="maintable">
-				<c:forEach items="${cart }" var="pro">
-					<tr align="center">
-                    <td style="width:25%;">${pro.key.name }</td>
-                    <td style="width:25%;">${pro.key.price }</td>
-                    <td style="width:22%;">
-                        <input type="button" value="-" onclick="changeCount('482b5255-741d-4466-8596-26b68db91dbb','3','95')" class="btn">
-
-                        <input type='text' value="${pro.value }" style="text-align:center;color:#87520E;width:120px;height:25px;" onkeydown="numbText(event);"
-                            onblur="changeCount('482b5255-741d-4466-8596-26b68db91dbb',this.value,'95')">
-
-                        <input type="button" value='+' onclick="changeCount('482b5255-741d-4466-8596-26b68db91dbb','5','95')" class="btn">
-                    </td>
-
-
-                    <td style="width:20%;">${pro.key.pnum }</td>
-                    <td>
-                        <a href="/bb/cart?method=remove&id=482b5255-741d-4466-8596-26b68db91dbb" onclick="delConfirm(event)">删除</a>
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="5" align="right">总价:￥720.0元</td>
-                </tr>
-                <tr>
-                    <td colspan="5" align="right">
-                        <button onclick="gotoorder();" style="cursor:pointer;background:#87520E;border-radius:5px;line-height:40px;border:none;width:160px;color:white;font-size:18px;">进入结算</button>
-                    </td>
-                </tr>
-				</c:forEach>
-                
-            </table>
-			</c:if>
-
-            
-
-        </div>
-
-
-
-
-
-        </div>
-
-    <div class="footer1">
-        <p align="center">
-            总部地址:北京市海淀区小南庄怡秀园甲一号亿德大厦10层 电话：010-61943240
-        </p>
-        <p align="center"> Copyright © 2005-2020 北京翡翠教育科技有限公司，All Rights Reserved 京ICP备12036804号-23</p>
-    </div>
-
-
-</body>
->>>>>>> refs/remotes/origin/master
 
 </html>
