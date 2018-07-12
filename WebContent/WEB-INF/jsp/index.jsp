@@ -351,10 +351,15 @@
 			dataType:"json",
 			success:function (data){
 				if(data.msg=="true"){
+<<<<<<< HEAD
 					alert("加入购物车成功.");
 				} else if(data.msg=="notEnough"){
 					alert("购物车中商品数量已超出库存值.")
 				}
+=======
+					alert("加入购物车成功");
+				} 
+>>>>>>> refs/remotes/origin/master
 			}
 		});
 	}
