@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+	id="WebApp_ID" version="3.1">
+  
+  <display-name>bookshopping</display-name>
+  <!-- 设置主页面 -->
+  <welcome-file-list>
+  	<welcome-file>/</welcome-file>
+  </welcome-file-list>
+  
+  
+  <!-- springmvc前端控制器 -->
+  <!-- 配置一个servlet,一个servlet相当于一个页面 -->
+  <servlet>
+  	<servlet-name>springmvc</servlet-name>
+  	<!-- 实现类 -->
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<!-- 初始化参数:给DispatcherServlet这个类的contextConfigLocation属性赋值 -->
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:spring/springmvc.xml</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>springmvc</servlet-name>
+  	<!-- springmvc对哪些请求进行解析 
+  		*.action 			解析所有以.action结尾的请求
+  		/	解析所有请求,除了jsp,使用/需要在springmvc配置文件中去定义静态资源的访问
+  		/*                 解析所有的请求包括jsp
+  	-->
+  	<!-- <url-pattern>*.action</url-pattern> -->
+  	<!-- 用DispatcherServlet这个类处理下面url的请求, -->
+  	<!-- 使用/会自动剔除方法名.后面的后缀,只保留方法名 -->
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 配置验证码的servlet -->
+  <servlet>
+  	<servlet-name>checkImg</servlet-name>
+  	<servlet-class>cn.sdut.utils.CheckImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<!-- 为servlet配置映射路径,访问时使用映射路径 -->
+  	<servlet-name>checkImg</servlet-name>
+  	<!-- 对reg.jsp中的验证码的src相对应 -->
+  	<url-pattern>/checkImg</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 配置字符编码的过滤器 -->
+  <filter>
+  	<filter-name>encoding</filter-name>
+  	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>forceEncoding</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>encoding</filter-name>
+  	<!-- 配置对哪些请求进行拦截，/*表示所有请求-->
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 配置自动登录的过滤器 -->
+  <filter>
+  	<filter-name>autoLogin</filter-name>
+  	<filter-class>cn.sdut.filter.AutoLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>autoLogin</filter-name>
+  	<!-- 配置对哪些请求进行拦截 -->
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- servletContext 代表整个web应用-->
+  <!-- spring监听器:监听servletContext对象创建与销毁-->
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<!-- 程序启动时自动加载以下文件但是要注意xml文件的名称的格式要统一,严格区分大小写 -->
+  	<param-value>classpath:spring/applicationContext-*.xml</param-value>
+  </context-param>
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
+  </listener>
+  
+  
+</web-app>
