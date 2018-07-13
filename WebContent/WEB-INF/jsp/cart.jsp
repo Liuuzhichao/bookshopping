@@ -38,7 +38,7 @@
 					</li>
 					<li>|</li>
 					<li><a
-						href="${pageContext.request.contextPath }/showCreatOrder">我的订单</a>
+						href="${pageContext.request.contextPath }/showOrders">我的订单</a>
 					</li>
 				</ul>
 			</div>

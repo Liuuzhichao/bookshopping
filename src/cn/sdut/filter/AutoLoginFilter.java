@@ -86,9 +86,10 @@ public class AutoLoginFilter implements Filter{
 					if(uri.indexOf("order")!=-1 || uri.indexOf("Order")!=-1) {
 						//跳转到登录页面,采用重定向方式,因为不需要携带参数
 						response.sendRedirect("showLogin?type=3");
-						
+						return ;
 						//请求转发
 						//request.getRequestDispatcher("").forward(request, response);
+						//redirect和forword的区别
 					}
 				}
 			}

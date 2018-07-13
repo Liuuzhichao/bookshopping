@@ -5,14 +5,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import cn.sdut.model.OrderItem;
 import cn.sdut.model.Orders;
 import cn.sdut.model.Products;
@@ -66,8 +63,31 @@ public class OrderController {
 		System.out.println(order);
 		//清空购物车
 		session.removeAttribute("cart");
+		//提交订单跳转到订单界面
+		return "redirect:showOrders";
+	}
+	
+	//打开查看订单的页面
+	@RequestMapping("showOrders")
+	public String showOrders(HttpServletRequest request) {
+		Users user = (Users) request.getSession().getAttribute("user");
 		
-		return "";
+		
+		//查询当前用户的所有的订单
+		List<Orders> list = service.findOrderList(user.getId());
+		for (Orders orders : list) {
+			System.out.println(orders);
+			List<OrderItem> orderItems = orders.getOrderItems();
+			for (OrderItem orderItem : orderItems) {
+				System.out.println(orderItem);
+			}
+		}
+		
+		//将查到的订单信息传递到页面中进行展示
+		request.setAttribute("list", list);
+		
+		
+		return "showorder";
 	}
 
 }

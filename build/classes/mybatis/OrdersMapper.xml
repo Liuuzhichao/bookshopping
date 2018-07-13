@@ -8,6 +8,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into orders values(#{id},#{money},#{receiverinfo},#{paystate},#{ordertime},#{userId});
 	</insert>
 	
+	<resultMap type="cn.sdut.model.Orders" id="orderList">
+		<!-- 
+			订单与订单项:一对多的关系
+		 -->
+		<id column="id" property="id" />
+		<result column="money" property="money"/>
+		<result column="receiveinfo" property="receiveinfo"/>
+		<result column="paystate" property="paystate"/>
+		<result column="ordertime" property="ordertime"/>
+		<result column="user_id" property="userId"/>
+		
+		<!-- 一对多的映射关系 -->
+		<collection property="orderItems" ofType="cn.sdut.model.OrderItem">
+			<id column="order_id" property="orderId"/>
+			<id column="product_id" property="productId"/>
+			<result column="buynum" property="buynum"/>
+			
+			<!-- 订单项与商品的关系:一对一 -->
+			<association property="product" javaType="cn.sdut.model.Products">
+				<id column="pid" property="id"/>
+				<result column="name" property="name"/>
+				<result column="price" property="price"/>
+			</association>
+		</collection>
+	</resultMap>
+	
+	<!-- 根据用户id查询订单 -->
+	<select id="findOrderList" parameterType="int" resultMap="orderList">
+		SELECT orders.*, products.name, products.price, orderitem.buynum
+		from orders, products, orderitem 
+		where orders.id=orderitem.order_id and orderitem.product_id=products.id and user_id=#{id};
+	
+	</select>
 
 
 

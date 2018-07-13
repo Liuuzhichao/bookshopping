@@ -29,4 +29,10 @@ public class OrdersServiceImpl implements OrdersService{
 		return num;
 	}
 
+	@Override
+	public List<Orders> findOrderList(Integer id) {
+		// TODO Auto-generated method stub
+		return mapper.findOrderList(id);
+	}
+
 }
