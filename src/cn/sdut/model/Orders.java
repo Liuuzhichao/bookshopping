@@ -10,7 +10,6 @@ public class Orders {
 	private Integer paystate;
 	private String ordertime;
 	private Integer userId;
-	
 	//一个订单拥有多个订单项
 	private List<OrderItem> orderItems;
 	

@@ -47,6 +47,7 @@ public class OrderController {
 		
 		//获取购物车信息
 		Map<Products, Integer> cart = (Map<Products, Integer>) session.getAttribute("cart");
+		//获取购物车中所有的商品
 		Set<Products> keySet = cart.keySet();
 		
 		List<OrderItem> items = new ArrayList<OrderItem>();
@@ -62,7 +63,8 @@ public class OrderController {
 		order.setOrderItems(items);
 		
 		service.saveOrder(order);
-		
+		System.out.println(order);
+		//清空购物车
 		session.removeAttribute("cart");
 		
 		return "";

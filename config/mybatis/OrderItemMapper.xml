@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.sdut.dao.OrderItemMapper">
 	
-	<insert id="saveOrderItem" parameterType="com.sdut.model.OrderItem">
+	<insert id="saveOrderItem" parameterType="cn.sdut.model.OrderItem">
 		insert into orderitem values(#{orderId},#{productId},#{buynum});
 	</insert>
 

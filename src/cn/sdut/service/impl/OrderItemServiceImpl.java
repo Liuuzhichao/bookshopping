@@ -16,7 +16,7 @@ public class OrderItemServiceImpl implements OrderItemService{
 	@Override
 	public int saveOrderItem(OrderItem orderItem) {
 		// TODO Auto-generated method stub
-		return 0;
+		return mapper.saveOrderItem(orderItem);
 	}
 
 }

@@ -5,6 +5,7 @@ public class OrderItem {
 	private String orderId;
 	private String productId;
 	private Integer buynum;
+	
 	public String getOrderId() {
 		return orderId;
 	}
